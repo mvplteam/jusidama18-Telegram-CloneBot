@@ -39,13 +39,7 @@ def start(update, context):
 @run_async
 def helper(update, context):
     LOGGER.info('UID: {} - UN: {} - MSG: {}'.format(update.message.chat.id, update.message.chat.username, update.message.text))
-    sendMessage("Here are the available commands of the bot\n\n" \
-        "*Usage:* `/clone <link> [DESTINATION_ID]`\n*Example:* \n1. `/clone https://drive.google.com/drive/u/1/folders/0AO-ISIXXXXXXXXXXXX`\n2. `/clone 0AO-ISIXXXXXXXXXXXX`" \
-            "\n*DESTIONATION_ID* is optional. It can be either link or ID to where you wish to store a particular clone." \
-            "\n\nYou can also *ignore folders* from clone process by doing the following:\n" \
-                "`/clone <FOLDER_ID> [DESTINATION] [id1,id2,id3]`\n In this example: id1, id2 and id3 would get ignored from cloning\nDo not use <> or [] in actual message." \
-                    "*Make sure to not put any space between commas (,).*\n" \
-                        f"Source of this bot: [GitHub]({REPO_LINK})", context.bot, update, 'Markdown')
+    sendMessage("Tidak ada bantuan untuk saat ini...", context.bot, update, 'Markdown')
 
 # TODO Cancel Clones with /cancel command.
 @run_async
