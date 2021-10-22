@@ -37,7 +37,7 @@ def start(update, context):
     # ;-;
 
 @run_async
-is_authorised
+@is_authorised
 def helper(update, context):
     LOGGER.info('UID: {} - UN: {} - MSG: {}'.format(update.message.chat.id, update.message.chat.username, update.message.text))
     sendMessage("Here are the available commands of the bot\n\n" \
