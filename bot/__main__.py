@@ -37,7 +37,6 @@ def start(update, context):
     # ;-;
 
 @run_async
-@is_authorised
 def helper(update, context):
     LOGGER.info('UID: {} - UN: {} - MSG: {}'.format(update.message.chat.id, update.message.chat.username, update.message.text))
     sendMessage("Here are the available commands of the bot\n\n" \
@@ -50,6 +49,7 @@ def helper(update, context):
 
 # TODO Cancel Clones with /cancel command.
 @run_async
+@is_authorised
 def cloneNode(update, context):
     LOGGER.info('UID: {} - UN: {} - MSG: {}'.format(update.message.chat.id, update.message.chat.username, update.message.text))
     args = update.message.text.split(" ")
@@ -123,6 +123,7 @@ def sleeper(value, enabled=True):
     return
 
 @run_async
+@is_authorised
 def countNode(update,context):
     LOGGER.info('UID: {} - UN: {} - MSG: {}'.format(update.message.chat.id, update.message.chat.username, update.message.text))
     args = update.message.text.split(" ",maxsplit=1)
@@ -143,6 +144,7 @@ def countNode(update,context):
         sendMessage("<b>Provide G-Drive Shareable Link to Count.</b>",context.bot,update)
 
 @run_async
+@is_owner
 def sendLogs(update, context):
     LOGGER.info('UID: {} - UN: {} - MSG: {}'.format(update.message.chat.id, update.message.chat.username, update.message.text))
     with open('log.txt', 'rb') as f:
@@ -151,6 +153,7 @@ def sendLogs(update, context):
                         chat_id=update.message.chat_id)
 
 @run_async
+@is_owner
 def shell(update, context):
     message = update.effective_message
     cmd = message.text.split(' ', 1)
@@ -183,6 +186,7 @@ def shell(update, context):
         message.reply_text(reply, parse_mode=ParseMode.MARKDOWN)
 
 @run_async
+@is_owner
 def gitpull(update, context):
     msg = update.effective_message.reply_text(
         "Pulling all changes from remote and then attempting to restart.",
@@ -202,6 +206,7 @@ def gitpull(update, context):
 
 
 @run_async
+@is_owner
 def restart(update, context):
     restart_message = sendMessage("Restarting, Please wait!", context.bot, update)
     # Save restart message object in order to reply to it after restarting
